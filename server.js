@@ -13,9 +13,8 @@ app.use(require("./routes"));
 
 // Mongoose connection
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/mongo-social-api",
+  process.env.MONGODB_URI || "mongodb://localhost/mongo_social_api",
   {
-    useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
