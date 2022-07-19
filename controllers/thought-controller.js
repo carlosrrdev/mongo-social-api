@@ -5,7 +5,7 @@ const thoughtController = {
   //Get all thoughts
   async getAllThoughts(req, res) {
     try {
-      const response = await Thought.find().select("-__v").sort({ _id: 1 });
+      const response = await Thought.find().sort({ _id: 1 });
       res.json(response);
     } catch (err) {
       console.log(err);
@@ -80,16 +80,7 @@ const thoughtController = {
         res.status(404).json({ message: "No thought found with this id" });
         return;
       }
-      const userData = await User.findOneAndUpdate(
-        { username: response.username },
-        { $pull: { thoughts: params.thoughtId } },
-        { new: true }
-      );
-      if (!userData) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
-      }
-      res.json(userData);
+      res.json({ message: "Successfully deleted thought" });
     } catch (err) {
       console.log(err);
       res.status(400).json(err);
@@ -115,7 +106,7 @@ const thoughtController = {
     }
   },
 
-  // Remove a thought
+  // Remove a reaction
   async removeReaction({ params }, res) {
     try {
       const response = await Thought.findOneAndUpdate(

@@ -42,6 +42,7 @@ const UserSchema = new Schema(
       getters: true,
     },
     id: false,
+    versionKey: false,
   }
 );
 

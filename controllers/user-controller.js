@@ -10,8 +10,7 @@ const userController = {
         .populate({
           path: "friends",
           select: "-__v",
-        })
-        .select("-__v");
+        });
       res.json(response);
     } catch (err) {
       console.log(err);
@@ -30,8 +29,7 @@ const userController = {
         .populate({
           path: "thoughts",
           select: "-__v",
-        })
-        .select("-__v");
+        });
       if (!response) {
         res.status(404).json({ message: "No user found with this id" });
         return;
